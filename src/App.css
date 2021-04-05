@@ -16,3 +16,20 @@
 .App-link {
   color: #61dafb;
 }
+
+body {
+	position: relative;
+}
+
+/* body{
+	margin: 0;
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	/* top: -50%;
+    left: -50%;
+    transform: translate(38%, 150%); */
+  /* }  */

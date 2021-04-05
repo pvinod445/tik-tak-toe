@@ -1,0 +1,41 @@
+@media only screen {
+	body {
+		margin: 0 auto !important;
+		max-width: 1000px;
+	}
+}
+
+fieldset {
+	overflow: hidden
+}
+
+.radioClass {
+	float: left;
+	clear: none;
+}
+
+.error {
+	outline: 3px solid red;
+}
+
+label {
+	float: left;
+	clear: none;
+	display: -webkit-inline-box;
+	padding: 0px 20px 20px 40px;
+}
+
+input[type=radio] {
+	float: left;
+	clear: none;
+	margin-right: 8px;
+}
+
+div.playerDiv {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, 140%);
+	/* width: 800px;
+  	margin-left: -400px; */
+}

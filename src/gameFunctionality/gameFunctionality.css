@@ -1,0 +1,74 @@
+@media only screen {
+	body {
+		margin: 0 auto !important;
+		max-width: 1000px;
+	}
+}
+
+div.result {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-45%, 300%);
+}
+
+div#bodyDiv {
+	height: 40em;
+	position: absolute;
+}
+
+table#mainTable {
+	width: 45%;
+	height: 200%;
+	top: 50%;
+    left: 50%;
+    transform: translate(0%, 140%);
+}
+
+input {
+	width: 100%;
+}
+
+input.rows {
+	width: 90px;
+	height: 30px;
+}
+
+select {
+	width: 100%;
+}
+
+button {
+	width: '100%';
+    border: 1px solid darkcyan;
+    cursor:pointer;
+    overflow: hidden;
+	outline:none;
+	color: darkcyan;
+}
+
+button.inActiveTab {
+	width: 100%;
+	display: block;
+	background-color: white;
+	color: darkcyan;
+}
+
+button.activeTab {
+	width: 100%;
+	display: block;
+	background-color: darkcyan;
+	color: white;
+}
+
+.OPlayer {
+	width: 100%;
+	background-color: brown;
+    color: white;
+}
+
+.XPlayer {
+	width: 100%;
+	background-color: cornflowerblue;
+    color: white;
+}
