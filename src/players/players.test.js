@@ -11,6 +11,7 @@ describe('Players', () => {
 		alreadySelected: 'O',
 		changed: jest.fn(),
 		symbolHandler: jest.fn(),
+		clicked: jest.fn()
 	}
 
 	it('Renders Players', () => {
@@ -30,12 +31,22 @@ describe('Players', () => {
 	});
 
 	describe('When User selects Player\'s Symbol', () => {
-		it('Should Add Player\' Symbol in state memory', () => {
+		it('Should Add Player\'s Symbol in state memory', () => {
 			const wrapper = shallow(<Players {...props} />);
 
 			wrapper.find('[data-testid="SymbolX"]').props().onChange();
 
 			expect(props.symbolHandler).toHaveBeenCalledTimes(1);
+		});
+	});
+
+	describe('When User Ready to add Player\'s Details', () => {
+		it('Should Add Player Details in state memory', () => {
+			const wrapper = shallow(<Players {...props} />);
+
+			wrapper.find('[data-testid="addPlayer"]').props().onClick();
+
+			expect(props.clicked).toHaveBeenCalledTimes(1);
 		});
 	});
 });
