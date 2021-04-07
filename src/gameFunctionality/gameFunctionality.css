@@ -47,6 +47,16 @@ button {
 	color: darkcyan;
 }
 
+button#newGame {
+	width: '100%';
+    border: 1px solid darkcyan;
+    cursor:pointer;
+    overflow: hidden;
+	outline:none;
+	color: white;
+	background-color: darkcyan;
+}
+
 button.inActiveTab {
 	width: 100%;
 	display: block;

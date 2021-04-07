@@ -3,31 +3,34 @@ import Players from '../players/players';
 import './gameFunctionality.css';
 
 class GameFunctionality extends Component {
-	state = {
-		players: {
-			'X': '',
-			'O': ''
-		},
-		currentPlayerTurn: 	'X',
-		scores: {
-			'X': [],
-			'O': []
-		},
-		playerName: '',
-		currentSymbol: '',
-		errors: false,
-		winningConditions: [
-							[0, 1, 2],
-							[3, 4, 5],
-							[6, 7, 8],
-							[0, 3, 6],
-							[1, 4, 7],
-							[2, 5, 8],
-							[0, 4, 8],
-							[2, 4, 6]
-						],
-		done: false,
-		win: ''
+	constructor() {
+		super();
+		this.state = {
+			players: {
+				'X': '',
+				'O': ''
+			},
+			currentPlayerTurn: 	'X',
+			scores: {
+				'X': [],
+				'O': []
+			},
+			playerName: '',
+			currentSymbol: '',
+			errors: false,
+			winningConditions: [
+								[0, 1, 2],
+								[3, 4, 5],
+								[6, 7, 8],
+								[0, 3, 6],
+								[1, 4, 7],
+								[2, 5, 8],
+								[0, 4, 8],
+								[2, 4, 6]
+							],
+			done: false,
+			win: ''
+		};
 	}
 
 	handleValidation = () => {
@@ -109,6 +112,19 @@ class GameFunctionality extends Component {
 		this.setState({scores: currentScores, currentPlayerTurn: changeTurn, done: done, win: win});
 	}
 
+	startNewGame = () => {
+		const players = {
+			'X': '',
+			'O': ''
+		};
+		const scores = {
+			'X': [],
+			'O': []
+		};
+
+		this.setState({players: players, currentPlayerTurn: 'X', scores: scores, playerName: '', currentSymbol: '', errors: false, done: false, win: ''});
+	}
+
 	render() {
 		let html = null;
 		let buildGameRows = null;
@@ -176,7 +192,7 @@ class GameFunctionality extends Component {
 				html = (
 					<div className='result'>
 						<h2>Congratulations! {this.state.players[this.state.win]} has won!</h2>
-						<a href='javascript: location.reload();'>Do you want to try another Game?</a>
+						<button id='newGame' onClick={this.startNewGame}>Start New Game</button>
 					</div>
 				);
 			}
