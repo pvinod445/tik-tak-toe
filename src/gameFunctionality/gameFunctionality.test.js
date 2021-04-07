@@ -19,6 +19,19 @@ describe('GameFunctionality', () => {
 			PlayersComponent.props().clicked();
 
 			expect(wrapper.state().errors).toEqual(true);
+
+			event = {
+				target: {
+					value: 'Vinod'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Vinod');
 		});
 	});
 });
