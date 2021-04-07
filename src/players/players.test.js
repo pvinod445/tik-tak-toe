@@ -17,4 +17,14 @@ describe('Players', () => {
 
 		expect(wrapper.type()).toEqual('div');
 	});
+
+	describe('When User types player Name', () => {
+		it('Should Add Player name in state memory', () => {
+			const wrapper = shallow(<Players {...props} />);
+
+			wrapper.find('[data-testid="PlayerName"]').props().onChange();
+
+			expect(props.changed).toHaveBeenCalledTimes(1);
+		});
+	});
 });
