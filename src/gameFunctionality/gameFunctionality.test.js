@@ -250,6 +250,11 @@ describe('GameFunctionality', () => {
 			expect(wrapper.state().players['O']).toEqual('Computer');
 
 			expect(wrapper.state().currentPlayerTurn).toEqual('X');
+
+			wrapper.find('[data-testid="row0"]').props().onClick(0);
+			wrapper.update();
+
+			expect(wrapper.state().currentPlayerTurn).toEqual('O');
 		});
 	});
 });
