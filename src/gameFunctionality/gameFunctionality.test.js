@@ -10,4 +10,15 @@ describe('GameFunctionality', () => {
 
 		expect(wrapper.type()).toEqual(Players);
 	});
+
+	describe('When User Clicks Add Player to Game', () => {
+		it('Should validate and add Player to the game if it passes all validations', () => {
+			const wrapper = shallow(<GameFunctionality />);
+			let PlayersComponent = wrapper.find(Players);
+
+			PlayersComponent.props().clicked();
+
+			expect(wrapper.state().errors).toEqual(true);
+		});
+	});
 });
