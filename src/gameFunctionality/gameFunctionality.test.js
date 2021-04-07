@@ -179,4 +179,77 @@ describe('GameFunctionality', () => {
 			expect(wrapper.state().players['O']).toEqual('Computer');
 		});
 	});
+
+	describe('Handling Player\'s Turns', () => {
+		it('Each Player should get alternate turn', () => {
+			const wrapper = shallow(<GameFunctionality />);
+			let PlayersComponent = wrapper.find(Players);
+
+			let event = {
+				target: {
+					value: 'Vinod'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Vinod');
+
+			event = {
+				target: {
+					value: 'X'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('X');
+
+			PlayersComponent.props().clicked();
+
+			expect(wrapper.state().errors).toEqual(false);
+
+			expect(wrapper.state().players['X']).toEqual('Vinod');
+
+			event = {
+				target: {
+					value: 'Computer'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Computer');
+
+			event = {
+				target: {
+					value: 'O'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('O');
+
+			PlayersComponent.props().clicked();
+			wrapper.update();
+
+			expect(wrapper.state().players['X']).toEqual('Vinod');
+			expect(wrapper.state().players['O']).toEqual('Computer');
+
+			expect(wrapper.state().currentPlayerTurn).toEqual('X');
+		});
+	});
 });

@@ -123,6 +123,7 @@ class GameFunctionality extends Component {
 						<input
 							className={this.state.scores['X'].includes(j) ? 'rows XPlayer' : (this.state.scores['O'].includes(j) ? 'rows OPlayer' : 'rows')}
 							id={'row' + j}
+							data-testid={'row' + j}
 							type='button'
 							value = {
 									(this.state.currentPlayerTurn === ''
@@ -137,6 +138,7 @@ class GameFunctionality extends Component {
 					 <td>
 						<input
 							id={'row' + (j + 1)}
+							data-testid={'row' + (j + 1)}
 							type='button'
 							value = {
 								(this.state.currentPlayerTurn === ''
@@ -152,6 +154,7 @@ class GameFunctionality extends Component {
 					 <td>
 						<input
 							id={'row' + (j + 2)}
+							data-testid={'row' + (j + 2)}
 							type='button'
 							value = {
 								(this.state.currentPlayerTurn === ''
