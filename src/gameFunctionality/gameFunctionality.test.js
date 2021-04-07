@@ -69,4 +69,43 @@ describe('GameFunctionality', () => {
 			expect(wrapper.state().errors).toEqual(true);
 		});
 	});
+
+	describe('When User Clicks Add Player to Game with Complete Player\'s Details', () => {
+		it('Should add Players to the game', () => {
+			const wrapper = shallow(<GameFunctionality />);
+			let PlayersComponent = wrapper.find(Players);
+
+			let event = {
+				target: {
+					value: 'Vinod'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Vinod');
+
+			event = {
+				target: {
+					value: 'X'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('X');
+
+			PlayersComponent.props().clicked();
+
+			expect(wrapper.state().errors).toEqual(false);
+
+			expect(wrapper.state().players['X']).toEqual('Vinod');
+		});
+	});
 });
