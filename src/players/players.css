@@ -36,6 +36,16 @@ div.playerDiv {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%, 140%);
-	/* width: 800px;
-  	margin-left: -400px; */
+}
+div.partialError {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, 120%);
+}
+div.completeError {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, 90%);
 }

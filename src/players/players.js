@@ -2,8 +2,16 @@ import React from 'react';
 import './players.css'
 
 const Players = (props) => {
+	let mainClassName = 'playerDiv';
+	if(props.errors && props.playerName === '' && props.currentSymbol === '') {
+		mainClassName = 'completeError';
+	}
+	else if(props.errors && (props.playerName === '' || props.currentSymbol === '')) {
+		mainClassName = 'partialError';
+	}
+
 	return (
-		<div className='playerDiv' style={{'width': '200px'}}>
+		<div className={mainClassName} style={{'width': '200px'}}>
 			<h3>Enter Player Name {props.playerNum}:</h3>
 			<input
 				type='text'
