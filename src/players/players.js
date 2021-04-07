@@ -8,10 +8,12 @@ const Players = (props) => {
 			<input
 				type='text'
 				className={props.errors && props.playerName === '' ? 'error'  : ''}
+				data-testid='PlayerName'
 				name='playerName'
 				placeholder='Enter Player Name'
 				value={props.playerName}
 				onChange={props.changed} />
+
 			{props.errors && props.playerName === '' ? <p style={{'color': 'red'}}>Please Enter Player's Name</p> : ''}
 
 			<div  className='container-fluid' style={{width: '100%', borderBottom: '2px solid lightgray'}}>
@@ -20,6 +22,7 @@ const Players = (props) => {
 					<label htmlFor="X">
 						<input
 							type="radio"
+							data-testid='SymbolX'
 							className={props.errors && props.currentSymbol === '' ? 'error'  : ''}
 							value="X"
 							disabled={props.alreadySelected === 'X'}
@@ -44,7 +47,7 @@ const Players = (props) => {
 				</div>
 			</div>
 
-			<input type='button' value='Add Player to the Game' disabled={props.disabled} onClick={props.clicked} />
+			<input data-testid='addPlayer' type='button' value='Add Player to the Game' disabled={props.disabled} onClick={props.clicked} />
 		</div>
 
 	)
