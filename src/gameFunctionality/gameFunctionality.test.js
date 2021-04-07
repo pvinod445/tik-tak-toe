@@ -348,4 +348,108 @@ describe('GameFunctionality', () => {
 			expect(wrapper.state().done).toEqual(true);
 		});
 	});
+
+	describe('Checking game is tie or not', () => {
+		it('Game should tie', () => {
+			const wrapper = shallow(<GameFunctionality />);
+			let PlayersComponent = wrapper.find(Players);
+
+			let event = {
+				target: {
+					value: 'Vinod'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Vinod');
+
+			event = {
+				target: {
+					value: 'X'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('X');
+
+			PlayersComponent.props().clicked();
+
+			expect(wrapper.state().errors).toEqual(false);
+
+			expect(wrapper.state().players['X']).toEqual('Vinod');
+
+			event = {
+				target: {
+					value: 'Computer'
+				}
+			}
+
+			PlayersComponent.props().changed(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().playerName).toEqual('Computer');
+
+			event = {
+				target: {
+					value: 'O'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('O');
+
+			PlayersComponent.props().clicked();
+			wrapper.update();
+
+			expect(wrapper.state().players['X']).toEqual('Vinod');
+			expect(wrapper.state().players['O']).toEqual('Computer');
+
+			expect(wrapper.state().currentPlayerTurn).toEqual('X');
+
+			wrapper.find('[data-testid="row0"]').props().onClick(0);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row2"]').props().onClick(2);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row3"]').props().onClick(3);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row4"]').props().onClick(4);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row7"]').props().onClick(6);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row5"]').props().onClick(5);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row8"]').props().onClick(8);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row1"]').props().onClick(1);
+			wrapper.update();
+
+			wrapper.find('[data-testid="row6"]').props().onClick(6);
+			wrapper.update();
+
+			expect(wrapper.state().done).toEqual(true);
+			expect(wrapper.state().win).toEqual('');
+		});
+	});
+
 });
