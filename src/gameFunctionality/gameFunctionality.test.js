@@ -45,4 +45,28 @@ describe('GameFunctionality', () => {
 			expect(wrapper.state().errors).toEqual(true);
 		});
 	});
+
+	describe('When User Clicks Add Player to Game with just entering Player\'s Symbol', () => {
+		it('Should validate and return an error', () => {
+			const wrapper = shallow(<GameFunctionality />);
+			let PlayersComponent = wrapper.find(Players);
+
+			let event = {
+				target: {
+					value: 'X'
+				}
+			}
+
+			PlayersComponent.props().symbolHandler(event);
+
+			wrapper.update();
+			PlayersComponent = wrapper.find(Players);
+
+			expect(PlayersComponent.props().currentSymbol).toEqual('X');
+
+			PlayersComponent.props().clicked();
+
+			expect(wrapper.state().errors).toEqual(true);
+		});
+	});
 });
